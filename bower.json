@@ -1,0 +1,24 @@
+{
+  "name": "Conquer-FMI",
+  "version": "0.0.1",
+  "description": "Fun game",
+  "main": "server.js",
+  "moduleType": [
+    "node"
+  ],
+  "authors": [
+    "team alGaida"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./public/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1"
+  }
+}
