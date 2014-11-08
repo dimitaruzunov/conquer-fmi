@@ -2,7 +2,7 @@ var express = require('express');
 var env = process.env.NODE_ENV || 'development';
 
 
-var app=express(), 
+var app=express(),
 	http = require('http'),
 	server = http.createServer(app),
 	io = require('socket.io').listen(server);
@@ -44,11 +44,17 @@ io.sockets.on('connection', function (socket) {
 			console.log(socket.player+" player has joined.");
 			socket.emit('setPlayer', socket.player);
 		}
-		
+
 	});
 
 	socket.on('changeTerritory', function(data){
 		io.sockets.emit('invadeTerritory', data);
+	});
+
+	socket.on('askForQuestion', function(){
+		// get question from db
+		var question = {body: '2 + 3 = ?', answer: 5};
+		io.sockets.emit('loadUpQuestion', JSON.stringify(question));
 	});
 
 	socket.on('disconnect', function(){
