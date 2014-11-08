@@ -4,6 +4,11 @@ body{
 }
 #logo{
     margin: -5px;
+    display: inline-block;
+    width: 150px;
+}
+#name{
+    display: inline-block;
 }
 form{
     position: absolute;
