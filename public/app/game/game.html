@@ -3,47 +3,63 @@
 <head>
 	<title>Conquer FMI</title>
 	<link rel="stylesheet" type="text/css" href="../../css/map.css">
-	<style type="text/css">
-	table.map td{
-		padding:50px;
-		border:solid 1px black;
-	}
-	</style>
 	<script src="socket.io/socket.io.js"></script>
 	<script src="../../lib/jquery/dist/jquery.min.js"></script>
 </head>
-<body>
+<body id="bodyID">
 
-	<div style="position:absolute; top:0px; z-index:999;">
-		<h2>Player <span id="player"></span></h2>
-		<p>Choose position</p>
-	</div>
-	<div id="map" class="focused">
+	<img id="xAnimation" src="../../img/xAnimation.gif"/>
+	<div class="focused">
+		<div style="position:absolute; top:0px; z-index:999;">
+			<h2>Player <span id="player"></span></h2>	
+			<p>Choose position</p>
+		</div>
 	    <img src="../../img/map.png"/>
 
 	    <div id="rooms">
-	    	<div class="territory darken" id="d1"></div>
-	        <div class="territory darken" id="d1"></div>
-	        <div class="territory darken" id="d2"></div>
-	        <div class="territory darken" id="d3"></div>
-	        <div class="territory darken" id="d4"></div>
-	        <div class="territory darken" id="d5"></div>
-	        <div class="territory darken" id="d6"></div>
-	        <div class="territory darken" id="d7"></div>
-	        <div class="territory darken" id="d8"></div>
-	        <div class="territory darken" id="d9"></div>
-	        <div class="territory darken" id="d10"></div>
-	        <div class="territory darken" id="d11"></div>
-	        <div class="territory darken" id="d12"></div>
-	        <div class="territory darken" id="d13"></div>
-	        <div class="territory darken" id="d14"></div>
-	        <div class="territory darken" id="d15"></div>
-	        <div class="territory darken" id="d16"></div>
-	        <div class="territory darken" id="d17"></div>
+			<div class="territory darken" id="d1" onclick="territoryName='d1';"></div>
+	        <div class="territory darken" id="d2" onclick="territoryName='d2';"></div>
+	        <div class="territory darken" id="d3" onclick="territoryName='d3';"></div>
+	        <div class="territory darken" id="d4" onclick="territoryName='d4';"></div>
+	        <div class="territory darken" id="d5" onclick="territoryName='d5';"></div>
+	        <div class="territory darken" id="d6" onclick="territoryName='d6';"></div>
+	        <div class="territory darken" id="d7" onclick="territoryName='d7';"></div>
+	        <div class="territory darken" id="d8" onclick="territoryName='d8';"></div>
+	        <div class="territory darken" id="d9" onclick="territoryName='d9';"></div>
+	        <div class="territory darken" id="d10" onclick="territoryName='d10';"></div>
+	        <div class="territory darken" id="d11" onclick="territoryName='d11';"></div>
+	        <div class="territory darken" id="d12" onclick="territoryName='d12';"></div>
+	        <div class="territory darken" id="d13" onclick="territoryName='d13';"></div>
+	        <div class="territory darken" id="d14" onclick="territoryName='d14';"></div>
+	        <div class="territory darken" id="d15" onclick="territoryName='d15';"></div>
+	        <div class="territory darken" id="d16" onclick="territoryName='d16';"></div>
+	        <div class="territory darken" id="d17" onclick="territoryName='d17';"></div>
+	        <div class="territory darken" id="d18" onclick="territoryName='d18';"></div>
 	    </div>
 	</div>
+	<div class="dark hidden" ></div>
 	<div id="popup" class="hidden">
-
+    	<div id="code-compilation-form" class="hidden">
+    		<form>
+        		<p class="question">What is the sum of every even nums?</p>
+        		<textarea class="console"></textarea>
+        		<div class="answer">
+	            	<input type="button" value="Compile"  class="btn-compile" />
+	            	<input type="text" class="console-response"/>
+        		</div>
+        		<input type="submit" value="Submit" class="submit"/>
+    		</form>
+		</div>
+    	<div id="find-answer-of-code-form">
+        	<form>
+            	<p class="question">What is the sum of every even nums?</p>
+            	<div class="posAns">
+                	<input type="button" value="Compile"  class="btn-compile" />
+                	<input type="text" class="console-response"/>
+                	<input type="submit" value="Submit" class="submit"/>
+            	</div>
+        	</form>
+    	</div>
 	</div>
 	<script src="../../scripts/map.js"></script>
 	<script src="../../scripts/functions.js"></script>

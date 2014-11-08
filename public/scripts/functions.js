@@ -13,14 +13,8 @@ var loadUpQuestion = function (question) {
 	questionTime = new Date().getTime();
 	timeout = window.setTimeout(sendAnswer, 10000000);
 
-	openPopup(question);
 };
 
-var openPopup = function (question) {
-	prompt(question.body);
-	$("#question").text(question);
-	$("#code").val();
-};
 
 var evaluateCode = function (code) {
 	$("#answer").text(eval(code));
