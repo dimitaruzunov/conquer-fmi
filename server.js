@@ -15,18 +15,45 @@ require('./server/config/route')(app);
 
 server.listen(config.port);
 //TODO: move on seperate file
-var map = [],usernames = {};
+var map = [],usernames = {}, users={}, turn=2;
 for(var i=0; i<18; i++)map[i]=0;
 
+users[1] = false;
+users[2] = false;
+
+function changeTurn(){
+	turn = 3-turn;
+	io.sockets.emit('changeTurns');
+}
+
 io.sockets.on('connection', function (socket) {
-	console.log("New Connection!");
 	socket.on('adduser', function(username){
-		socket.username = username;
-		usernames[username] = username;
-		socket.emit('setPlayer', io.eio.clientsCount);
+		if(io.eio.clientsCount<=2){
+			if(!users[1]){
+				socket.username = username;
+				socket.player = 1;
+				usernames[username] = username;
+				users[1] = true;
+			}else{
+				socket.username = username;
+				socket.player = 2;
+				usernames[username] = username;
+				users[2] = true;
+				changeTurn();
+			}
+			console.log(socket.player+" player has joined.");
+			socket.emit('setPlayer', socket.player);
+		}
+		
+	});
+
+	socket.on('changeTerritory', function(data){
+		io.sockets.emit('invadeTerritory', data);
 	});
 
 	socket.on('disconnect', function(){
+		console.log(socket.player+" player has left the game.");
+		users[socket.player] = false;
 		delete usernames[socket.username];
 		io.sockets.emit('updateusers', usernames);
 		socket.broadcast.emit('updatechat');

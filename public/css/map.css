@@ -181,7 +181,7 @@ img {
     -o-transition: opacity 0.2s ease-in-out;
 }
 .darken:hover{
-    opacity: 0;
+    opacity: 0.1;
 }
 #map{
     position: relative;
