@@ -1,18 +1,9 @@
-#rooms {
-    position: absolute;
-    top: -7px;
-    left: -7px;
-}
+html, body, div{padding:0px;margin:0px;}
 
 img {
     width: 1280px;
     height: 600px;
     border-radius: 10px;
-}
-
-.darken {
-    background: black;
-    opacity: 0.4;
 }
 
 .blue {
@@ -21,10 +12,6 @@ img {
 
 .red {
     background-color: red;
-}
-
-#map div {
-    position: absolute;
 }
 
 #d1 {
@@ -175,4 +162,30 @@ img {
 
 .hidden {
     display: none;
+}
+/*
+    Krisko's styles
+*/
+#rooms {
+    position: absolute;
+    top: -7px;
+    left: -7px;
+}
+.darken {
+    background: black;
+    opacity: 0.4;
+    cursor: pointer;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+}
+.darken:hover{
+    opacity: 0;
+}
+#map{
+    position: relative;
+}
+#map div {
+    position: absolute;
 }

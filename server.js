@@ -15,8 +15,8 @@ require('./server/config/route')(app);
 
 server.listen(config.port);
 //TODO: move on seperate file
-
-var usernames = {};
+var map = [],usernames = {};
+for(var i=0; i<18; i++)map[i]=0;
 
 io.sockets.on('connection', function (socket) {
 	console.log("New Connection!");
@@ -25,20 +25,6 @@ io.sockets.on('connection', function (socket) {
 		usernames[username] = username;
 		socket.emit('setPlayer', io.eio.clientsCount);
 	});
-
-	socket.on('selectField', function (data) {
-		socket.broadcast.emit('selectEnemyArea', data);
-		socket.emit('selectArea', data);
-		var axis = JSON.parse(data);
-		
-		console.log("map["+axis.y+"]["+axis.x+"]="+axis.id);
-		map[axis.y][axis.x] = axis.id;
-	});
-
-	socket.on('serverAskQuestion', function () {
-		socket.broadcast.emit('askQuestion');
-		socket.emit('askQuestion');
-	});	
 
 	socket.on('disconnect', function(){
 		delete usernames[socket.username];

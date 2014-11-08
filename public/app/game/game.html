@@ -13,69 +13,8 @@
 	<script src="../../lib/jquery/dist/jquery.min.js"></script>
 </head>
 <body>
-	
-	<script>
-		var map = [
-			[0,0,0,0],
-			[0,0,0,0]
-		], id, selectedArea;
-		//TODO: add config file
-		var socket = io.connect('http://localhost:3030');
-		//var socket = io.connect('http://localhost:8080');
 
-		socket.on('connect', function(){
-			socket.emit('adduser', "krisko");
-		});
-		socket.on('setPlayer', function(data){
-			id = parseInt(data);
-			if(id==1) $("#player").css("color", "blue");
-			if(id==2) $("#player").css("color", "red");
-			$("#player").text(data);
-		});
-		socket.on('selectArea', function(data){
-			var axis = JSON.parse(data);
-			map[axis.y][axis.x] = axis.id;
-			updateMap()
-		});
-		socket.on('selectEnemyArea', function(data){
-			var axis = JSON.parse(data);
-			map[axis.y][axis.x] = axis.id;
-			updateMap();
-		});
-		socket.on('askQuestion', function(){
-			if(prompt("2+3=?")==5){
-				socket.emit('selectField', selectedArea);
-			}else{
-
-			}
-		});
-		
-		$(function(){
-			$('#datasend').click( function() {
-				var message = $('#data').val();
-				$('#data').val('');
-				socket.emit('sendchat', message);
-			});
-			$("td").click(function(){
-				socket.emit('serverAskQuestion');
-				selectedArea = JSON.stringify({x:$(this).index(), y:$(this).parent().index(), id:id});		
-			})
-		});
-
-		function updateMap(){
-			for(var row in map){
-				for(column in map[row]){
-					console.log(row+","+column+"="+map[row][column]);
-					if(map[row][column] == 1){
-						$("#area"+row+column).css("background-color", "blue");
-					}else if(map[row][column] == 2){
-						$("#area"+row+column).css("background-color", "red");
-					}
-				}
-			}
-		}
-	</script>
-	<div style="position:absolute; top:0px; z-info:999;">
+	<div style="position:absolute; top:0px; z-index:999;">
 		<h2>Player <span id="player"></span></h2>
 		<p>Choose position</p>
 	</div>
@@ -83,6 +22,7 @@
 	    <img src="../../img/map.png"/>
 
 	    <div id="rooms">
+	    	<div class="territory darken" id="d1"></div>
 	        <div class="territory darken" id="d1"></div>
 	        <div class="territory darken" id="d2"></div>
 	        <div class="territory darken" id="d3"></div>
@@ -100,7 +40,6 @@
 	        <div class="territory darken" id="d15"></div>
 	        <div class="territory darken" id="d16"></div>
 	        <div class="territory darken" id="d17"></div>
-	        <div class="territory darken" id="d18"></div>
 	    </div>
 	</div>
 	<div id="popup" class="hidden">
@@ -121,5 +60,6 @@
 		</tr>
 	</table> -->
 	<script src="../../scripts/map.js"></script>
+	<script src="../../scripts/functions.js"></script>
 </body>
 </html>

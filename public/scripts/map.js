@@ -1,10 +1,10 @@
 (function () {
     var rooms = $(".territory");
-    console.log(rooms);
+    //console.log(rooms);
 
-    rooms.on('click', function () {
+    /*rooms.on('click', function () {
         var blurredBackground = $('.focused');
         blurredBackground.addClass('blurred');
         $('#popup').removeClass('hidden');
-    });
+    });*/
 })();
