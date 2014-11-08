@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>Conquer FMI</title>
+	<link rel="stylesheet" type="text/css" href="../../css/map.css">
 	<style type="text/css">
 	table.map td{
 		padding:50px;
@@ -74,9 +75,38 @@
 			}
 		}
 	</script>
-	<h2>Player <span id="player"></span></h2>
-	<p>Choose position</p>
-	<table class="map">
+	<div style="position:absolute; top:0px; z-info:999;">
+		<h2>Player <span id="player"></span></h2>
+		<p>Choose position</p>
+	</div>
+	<div id="map" class="focused">
+	    <img src="../../img/map.png"/>
+
+	    <div id="rooms">
+	        <div class="territory darken" id="d1"></div>
+	        <div class="territory darken" id="d2"></div>
+	        <div class="territory darken" id="d3"></div>
+	        <div class="territory darken" id="d4"></div>
+	        <div class="territory darken" id="d5"></div>
+	        <div class="territory darken" id="d6"></div>
+	        <div class="territory darken" id="d7"></div>
+	        <div class="territory darken" id="d8"></div>
+	        <div class="territory darken" id="d9"></div>
+	        <div class="territory darken" id="d10"></div>
+	        <div class="territory darken" id="d11"></div>
+	        <div class="territory darken" id="d12"></div>
+	        <div class="territory darken" id="d13"></div>
+	        <div class="territory darken" id="d14"></div>
+	        <div class="territory darken" id="d15"></div>
+	        <div class="territory darken" id="d16"></div>
+	        <div class="territory darken" id="d17"></div>
+	        <div class="territory darken" id="d18"></div>
+	    </div>
+	</div>
+	<div id="popup" class="hidden">
+
+	</div>
+	<!-- <table class="map">
 		<tr>
 			<td id="area00"> </td>
 			<td id="area01"> </td>
@@ -89,6 +119,7 @@
 			<td id="area12"> </td>
 			<td id="area13"> </td>
 		</tr>
-	</table>
+	</table> -->
+	<script src="../../scripts/map.js"></script>
 </body>
 </html>
