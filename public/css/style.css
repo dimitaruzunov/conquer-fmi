@@ -1,0 +1,44 @@
+body{
+    background: black;
+}
+img{
+    width:1360px;
+}
+form{
+    position: absolute;
+    top: 300px;
+    left: 480px;
+}
+#username{
+    height: 55px;
+    width: 320px;
+    border-radius: 15px;
+    background: black;
+    color: yellow;
+    font-size: 30px;
+    padding: 5px;
+}
+#btn-join{
+    border-radius: 10px;
+    background: yellow;
+    width: 95px;
+    height: 55px;
+    font-size: 24px;
+    font-family: cursive;
+    position: absolute;
+    top: 10px;
+    right: -110px;
+}
+.users{
+    position: absolute;
+    top: 370px;
+    left: 560px;
+    color: yellow;
+    font-size: 30px;
+}
+#number-of-users{
+    display: inline-block;
+    font-weight: bold;
+    font-size: 34px;
+    margin-right: 10px;
+}

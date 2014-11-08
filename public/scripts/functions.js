@@ -2,8 +2,12 @@ var yourTurn = function () {
 
 };
 
-var askForQuestion = function () {
+var attack = function () {
+	socketOnAttack();
+};
 
+var askForQuestion = function () {
+	socketOnAskQuestion();
 };
 
 var loadUpQuestion = function (question) {
@@ -19,7 +23,7 @@ var loadUpQuestion = function (question) {
 
 var openPopup = function (question) {
 	$("#question").text(question);
-};
+};0
 
 var sendAnswer = function (answer) {
 
@@ -33,6 +37,10 @@ var updateStats = function (status) {
 	if (status.yourTurn) {
 		yourTurn();
 	}
+};
+
+var updateMap = function () {
+
 };
 
 var updateCorrectness = function (correct) {

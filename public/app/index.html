@@ -2,17 +2,16 @@
 <html>
 <head>
 		<meta charset="utf-8">
-		<link rel="stylesheet" href="loby-styles.css"/>
+		<link rel="stylesheet" href="../css/styles.css"/>
 		<title>Conquer-FMI</title>
 </head>
 <body>
-		<img src="fmi-bckgr.jpg">
+		<img src="../img/fmi-bckgr.jpg">
 		<form>
-				<input type="text">
-				<input type="submit">
-		</form>
-		<h2>Users joined:</h2>
-		<div id="users"></div>
+	        <input type="text" id="username"/>
+	        <input type="submit" value="JOIN" id="btn-join"/>
+    	</form>
+    	<div class="users"><div id="number-of-users">2</div> users has joined</div>
 		<script src="../lib/jquery/dist/jquery.min.js"></script>
 		<script src="../scripts/functions.js"></script>
 </body>
