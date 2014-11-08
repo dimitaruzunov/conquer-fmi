@@ -1,7 +1,7 @@
 (function () {
 	var body = $("body");
 	body.on("click", ".territory .free", function() {
-		attack($(this).attr("id"));
+		attack($(this).attr("id").substring(1));
 		$(this).addClass("underAttack");
 	});
 
