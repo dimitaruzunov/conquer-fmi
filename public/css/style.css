@@ -18,6 +18,7 @@ form{
     color: yellow;
     font-size: 30px;
     padding: 5px;
+    outline: none;
 }
 #btn-join{
     border-radius: 10px;
@@ -25,10 +26,15 @@ form{
     width: 95px;
     height: 55px;
     font-size: 24px;
-    font-family: cursive;
+    font-family: Verdana;
+    text-decoration: none;
     position: absolute;
     top: 10px;
     right: -110px;
+}
+#btn-text {
+    padding-top:12px;
+    padding-left: 22px;
 }
 .users{
     position: absolute;

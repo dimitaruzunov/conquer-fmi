@@ -59,5 +59,5 @@
 		socket.emit('changeTerritory', JSON.stringify({x:$(this).index(), id:id}));
 		//selectedArea = JSON.stringify({x:$(this).index(), id:id});
 	});
-	
+
 })();
