@@ -9,4 +9,5 @@
 		e.preventDefault();
 		window.location.href = $(this).attr("href") + "/" + $("#username").val();
 	});
+	
 })();
