@@ -281,7 +281,7 @@ textarea{
 .posAns{
     position: absolute;
     top: 350px;
-    left: 50PX;
+    left: 75PX;
 }
 .submit{
     border-radius: 5px;
@@ -293,4 +293,19 @@ textarea{
 }
 .posAns .submit{
     left: 300px;
+}
+
+/*----------- Monika ----------*/
+.question{
+    width: 700px;
+    overflow-y: auto;
+    margin-top: 60px;
+    max-height: 250px;
+    border: none;
+}
+#code-compilation-form form .question{
+    max-height: 65px;
+}
+.posAns .submit{
+    left: 10px;
 }
