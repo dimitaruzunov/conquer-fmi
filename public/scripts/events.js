@@ -9,4 +9,10 @@
 		e.preventDefault();
 		window.location.href = $(this).attr("href") + "/" + $("#username").val();
 	});
+
+	body.on("click", "#run", function() {
+		evaluateCode($("#code").text());
+	});
+
+	body.on("click", "#submitAnswer", sendAnswer);
 })();

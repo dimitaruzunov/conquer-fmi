@@ -10,23 +10,31 @@ var askForQuestion = function () {
 	socketOnAskQuestion();
 };
 
+var timeout;
+var questionTime;
 var loadUpQuestion = function (question) {
+	questionTime = new Date().getTime();
+	timeout = window.setTimeout(sendAnswer, 10000000);
+
 	openPopup(question);
-
-	// get answer
-	$("#submit").click(function() {
-		var answer = $("#answer").val();
-	});
-
-	sendAnswer(answer);
 };
 
 var openPopup = function (question) {
 	$("#question").text(question);
+	$("#code").val();
 };
 
-var sendAnswer = function (answer) {
+var evaluateCode = function (code) {
+	$("#answer").text(eval(code));
+};
 
+var sendAnswer = function () {
+	window.clearTimeout(timeout);
+
+	var currentTime = new Date().getTime();
+	var time = currentTime - questionTime;
+
+	// send answer and time
 };
 
 var updateStats = function (status) {
