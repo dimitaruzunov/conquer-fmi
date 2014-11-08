@@ -55,6 +55,11 @@
 		//updateMap()
 	});
 
+	$('.submit').on('click', function() {
+		$("#popup").addClass('hidden');
+		$(".dark").addClass('hidden');
+		$(".focused").removeClass('blurred');
+	})
 	socket.on('selectArea', function(data){
 		var axis = JSON.parse(data);
 		map[axis.y][axis.x] = axis.id;
