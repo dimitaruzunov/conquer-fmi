@@ -24,6 +24,7 @@
 
 	socket.on('changeTurns', function() {
 		turn = 3-turn;
+		updateMap();
 		if(turn == id){
 			yourTurn();
 		}else{
