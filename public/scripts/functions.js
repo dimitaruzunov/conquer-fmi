@@ -23,7 +23,7 @@ var loadUpQuestion = function (question) {
 
 var openPopup = function (question) {
 	$("#question").text(question);
-};0
+};
 
 var sendAnswer = function (answer) {
 
