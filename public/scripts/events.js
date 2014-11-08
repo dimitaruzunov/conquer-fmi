@@ -1,4 +1,5 @@
 (function () {
+
 	var body = $("body");
 
 	body.on("click", ".territory .free", function() {
@@ -15,7 +16,7 @@
 		evaluateCode($("#code").text());
 	});
 
-	body.on("click", "#submitAnswer", sendAnswer);
+	// body.on("click", "#submitAnswer", sendAnswer);
 
 	socket.on('connect', function() {
 		socket.emit('adduser', "krisko");
@@ -39,8 +40,17 @@
 
 	socket.on('invadeTerritory', function(data){
 		var axis = JSON.parse(data);
-		socket.emit('askForQuestion');
-		$("#d"+axis.x).css("background-color", "blue");
+		selectedArea = axis.x;
+		console.log("You are fighgting for:"+selectedArea);
+		replayGif();
+		var territoryName = "d"+selectedArea;
+		var x = $("#"+territoryName).offset().left+$("#"+territoryName).width()/2-90;
+		var y = $("#"+territoryName).offset().top+$("#"+territoryName).height()/2-50;
+		$('#xAnimation').css({ 'opacity': 1});
+		$('#xAnimation').css({ 'margin-left': x+'px'});
+		$('#xAnimation').css({ 'margin-top': y+'px'});
+		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0});},900);
+		// $("#d"+axis.x).css("background-color", "blue");
 		//map[axis.x] = axis.id;
 		//updateMap()
 	});
@@ -55,9 +65,26 @@
 		loadUpQuestion(JSON.parse(data));
 	});
 
+	socket.on('winTerritory', function (data) {
+		var axis = JSON.parse(data);
+		//alert(selectedArea + " " + data);
+		console.log("Player"+axis.winner+" won")
+		map[selectedArea] = axis.winner;
+		updateMap()
+		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
+	});
+
+	socket.on('noWinTerritory', function () {
+		// hide popup
+	});
+
 	$(".territory").click(function(){
 		socket.emit('changeTerritory', JSON.stringify({x:$(this).index(), id:id}));
 		//selectedArea = JSON.stringify({x:$(this).index(), id:id});
-	});
-
+    });
+	function replayGif(){
+		var img = new Image();
+		img.src = '../img/xAnimation.gif';
+		$('#xAnimation').css('background-image', 'url("' + img.src + '?x=' + Date.now() + '")' );
+	};
 })();

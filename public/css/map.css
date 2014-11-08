@@ -7,6 +7,22 @@ html, body, div{padding:0px;margin:0px;}
     height:80px;
     opacity: 0;
 }
+.territory {
+    position:absolute;
+    left:120px;
+}
+#editor { 
+    position: relative;
+    width: 80%;
+    height: 300px;
+    border:1px solid #fff;
+    font-size: 15px;
+}
+#edit-panel {
+    position:relative;
+    left: 80px;
+}
+
 #rooms {
     position: absolute;
     top: -7px;
@@ -37,13 +53,10 @@ img {
     background-color: red;
 }
 
-div {
-    position: absolute;
-}
 #rooms {
     position: absolute;
-    top: -7px;
-    left: -7px;
+    top: -2px;
+    left: 17px;
 }
 .darken {
     background: black;
@@ -64,28 +77,28 @@ div {
     position: absolute;
 }
 
-#d1 {
+#d0 {
     top: 203px;
     left: 24px;
     width: 92px;
     height: 62px;
 }
 
-#d2 {
+#d1 {
     top: 202px;
     left: 120px;
     width: 134px;
     height: 63px;
 }
 
-#d3 {
+#d2 {
     top: 202px;
     left: 260px;
     width: 116px;
     height: 63px;
 }
 
-#d4 {
+#d3 {
     top: 202px;
     left: 382px;
     width: 160px;
@@ -93,98 +106,98 @@ div {
 
 }
 
-#d5 {
+#d4 {
     top: 207px;
     left: 549px;
     width: 168px;
     height: 58px;
 }
 
-#d6 {
+#d5 {
     top: 207px;
     left: 723px;
     width: 150px;
     height: 58px;
 }
 
-#d7 {
+#d6 {
     top: 207px;
     left: 878px;
     width: 168px;
     height: 58px;
 }
 
-#d8 {
+#d7 {
     top: 270px;
     left: 24px;
     width: 1022px;
     height: 45px;
 }
 
-#d9 {
+#d8 {
     top: 323px;
     left: 24px;
     width: 134px;
     height: 35px;
 }
 
-#d10 {
+#d9 {
     top: 323px;
     left: 164px;
     width: 84px;
     height: 35px;
 }
 
-#d11 {
+#d10 {
     top: 323px;
     left: 254px;
     width: 76px;
     height: 35px;
 }
 
-#d12 {
+#d11 {
     top: 323px;
     left: 335px;
     width: 144px;
     height: 70px;
 }
 
-#d13 {
+#d12 {
     top: 323px;
     left: 485px;
     width: 80px;
     height: 54px;
 }
 
-#d14 {
+#d13 {
     top: 323px;
     left: 570px;
     width: 155px;
     height: 53px;
 }
 
-#d15 {
+#d14 {
     top: 323px;
     left: 730px;
     width: 87px;
     height: 53px;
 }
 
-#d16 {
+#d15 {
     top: 323px;
     left: 823px;
     width: 98px;
     height: 74px;
 }
 
-#d17 {
+#d16 {
     top: 323px;
     left: 926px;
     width: 121px;
     height: 42px;
 }
 
-#d18 {
+#d17 {
     top: 211px;
     left: 1053px;
     width: 180px;

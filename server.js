@@ -15,7 +15,7 @@ require('./server/config/route')(app);
 
 server.listen(config.port);
 //TODO: move on seperate file
-var map = [],usernames = {}, users={}, turn=2;
+var map = [],usernames = {}, users={}, turn=1, falseAns = 0;
 for(var i=0; i<18; i++)map[i]=0;
 
 users[1] = false;
@@ -48,12 +48,41 @@ io.sockets.on('connection', function (socket) {
 	});
 
 	socket.on('changeTerritory', function(data){
+		var question = {body: '2 + 3 = ?', answer: 5};
 		io.sockets.emit('invadeTerritory', data);
+		io.sockets.emit('loadUpQuestion', JSON.stringify(question));
 	});
 
-	socket.on('askForQuestion', function(){
+	socket.on('trueAnswer', function() {
+		console.log("Player"+turn+" answered!");
+		if (turn == socket.player) {
+			console.log("Player"+socket.player+" has answered correctly!")
+			io.sockets.emit('winTerritory', JSON.stringify({winner: socket.player}));
+			changeTurn();
+		} else {
+			// io.sockets.emit('')
+		}
+		
+	});
+
+	socket.on('falseAnswer', function() {
+		if (falseAns) {
+			changeTurn();
+			falseAns = 0;
+			io.sockets.emit('noWinTerritory');
+			return;
+		}
+		falseAns++;
+	});
+
+	socket.on('checkAnswer', function(data){
 		// get question from db
-		var question = {body: '2 + 3 = ?', answer: 5};
+		var q = JSON.parse(data);
+		if (turn == socket.player) {
+			if (q.question.answer == q.userAns) {
+
+			}
+		}
 		io.sockets.emit('loadUpQuestion', JSON.stringify(question));
 	});
 

@@ -2,11 +2,12 @@
     var rooms = $(".territory");
 
     rooms.on('click', function () { 
+    	replayGif();
 		setTimeout(function() {
         var blurredBackground = $('.focused');
         blurredBackground.addClass('blurred');
         $('#popup').removeClass('hidden');
-        $('.dark').removeClass('hidden');}, 1300);
+        $('.dark').removeClass('hidden');}, 950);
 		
 		replayGif();
 		
