@@ -1,4 +1,5 @@
 // var Course = require('mongoose').model('Course');
+var Question = require('mongoose').model('Question');
 
 module.exports = {
 	// sendAllCourses: function(req, res, next) {
@@ -12,3 +13,5 @@ module.exports = {
 	// 	});
 	// }
 };
+
+//getRandom, 

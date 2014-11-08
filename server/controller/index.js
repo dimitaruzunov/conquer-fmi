@@ -1,5 +1,5 @@
-// var courseCtrl = require('../controller/courseController');
+var questoionCtrl = require('../controller/questionController');
 
-// module.exports = {
-// 	courses: courseCtrl,
-// };
+module.exports = {
+	questions: questionCtrl,
+};
