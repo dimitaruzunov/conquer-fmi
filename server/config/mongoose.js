@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-	//courseModel = require('../models/courseModel');
+	questionModel = require('../models/questionModel');
 
 module.exports = function(config) {
 	mongoose.connect(config.db);
@@ -17,5 +17,5 @@ module.exports = function(config) {
 		console.log('Database error: ' + err);
 	});
 
-	//courseModel.addInitialCourses();
+	questionModel.addInitialQuestions();
 }

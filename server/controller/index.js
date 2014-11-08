@@ -1,4 +1,4 @@
-var questoionCtrl = require('../controller/questionController');
+var questionCtrl = require('../controller/questionCtrl');
 
 module.exports = {
 	questions: questionCtrl,
