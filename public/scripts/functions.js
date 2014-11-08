@@ -2,8 +2,8 @@ var yourTurn = function () {
 
 };
 
-var attack = function () {
-	socketOnAttack();
+var attack = function (terrId) {
+	socketOnAttack(terrId);
 };
 
 var askForQuestion = function () {
@@ -23,7 +23,7 @@ var loadUpQuestion = function (question) {
 
 var openPopup = function (question) {
 	$("#question").text(question);
-};0
+};
 
 var sendAnswer = function (answer) {
 
