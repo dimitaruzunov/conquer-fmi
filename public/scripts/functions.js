@@ -2,8 +2,8 @@ var yourTurn = function () {
 
 };
 
-var attack = function () {
-	socketOnAttack();
+var attack = function (terrId) {
+	socketOnAttack(terrId);
 };
 
 var askForQuestion = function () {
