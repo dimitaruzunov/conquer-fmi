@@ -28,6 +28,11 @@ var endGame = function () {
 	showEndGamePopup();
 };
 
+var updateStat = function() {
+	$("#p1").html("Player 1 result: " + (plResult_1+=Math.floor(Math.random()*50)).toString());
+	$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());
+}
+
 var showEndGamePopup = function () {
 	$('#popup').hide();
 	endGamePopup.show();
@@ -96,5 +101,5 @@ var updateCorrectness = function (correct) {
 	}
 };
 //TODO: add config file
-var socket = io.connect('http://localhost:3030');
-//var socket = io.connect('http://localhost:8080');
+var socket = io.connect('http://10.0.201.34:3030');
+//var socket = io.connect('http://localhost:3030');

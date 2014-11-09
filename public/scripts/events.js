@@ -9,7 +9,7 @@
 
 	body.on("click", "#btn-join", function(e) {
 		e.preventDefault();
-		window.location.href = $(this).attr("href") + "/" + $("#username").val();
+		window.location.href = $(this).attr("href");
 	});
 
 	body.on("click", "#compile", function() {
@@ -46,6 +46,9 @@
 		$("#player").text(data);
 	});
 
+	socket.on('updatePoints', function() {
+		updateStat();
+	});
 	socket.on('invadeTerritory', function(data){
 		var axis = JSON.parse(data);
 		selectedArea = axis.x;
@@ -68,11 +71,7 @@
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
-		turn = 3 - turn;
-		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
-		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
-		$("#p1").html("Player 1 result: " + (plResult_1+=Math.floor(Math.random()*50)).toString());
-		$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());
+		turn = 3 - turn;		
 		checkAnswer(curQ);
 	});
 
