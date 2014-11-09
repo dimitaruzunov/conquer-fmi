@@ -2,6 +2,7 @@ html, body, div {
   padding:0px;margin:0px;
 }
 body{
+    font-family: roboto;
     background-color: rgb(161, 161, 161);
 }
 @font-face {
@@ -94,6 +95,7 @@ body{
     -size: 15px;
     border-radius: 5px;
     font-size: 18px;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
 }
 #rooms {
     position: absolute;
@@ -409,4 +411,14 @@ textarea{
   text-align: center;
   font-size: 30px;
   border: 1px solid #444;
+}
+
+.correct, .wrong{
+    position: absolute;
+    left: 525px;
+    top: 350px;
+}
+.correct img, .wrong img{
+    width: 30px;
+    height: 30px;
 }
