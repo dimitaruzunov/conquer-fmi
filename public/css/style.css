@@ -9,6 +9,9 @@ body{
 }
 #name{
     display: inline-block;
+    left: 260px;
+    position: relative;
+    vertical-align: top;
 }
 form{
     position: absolute;
