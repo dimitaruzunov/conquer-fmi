@@ -12,6 +12,11 @@
 		window.location.href = $(this).attr("href") + "/" + $("#username").val();
 	});
 
+	body.on("click", "#compile", function() {
+		var code = editor.getSession().getValue();
+		evaluateCode(code);
+	});
+
 	body.on("click", "#run", function() {
 		evaluateCode($("#code").text());
 	});
@@ -24,9 +29,9 @@
 
 	socket.on('changeTurns', function() {
 		turn = 3-turn;
-		if(turn == id){
+		if (turn == id) {
 			yourTurn();
-		}else{
+		} else {
 			//its not your turn
 		}
 	});
