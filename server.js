@@ -32,7 +32,7 @@ function changeTurn(){
 function getData(n) {
 	questions = n;
 	console.log(questions);
-}
+};
 
 function getDbId() {
 	Question.find({}).exec(function(err, data) {
@@ -43,14 +43,14 @@ function getDbId() {
 		return getData(data);
 	});
 	console.log('data loaded');
-}
+};
 function startGame() {
 	// game timer
 	setTimeout(function () {
 		io.sockets.emit('endGame');
-	}, 20000);
+	}, 2000000);
 	getDbId();
-}
+};
 
 io.sockets.on('connection', function (socket) {
 	socket.on('adduser', function(username){
@@ -66,7 +66,7 @@ io.sockets.on('connection', function (socket) {
 				usernames[username] = username;
 				users[2] = true;
 				changeTurn();
-				// startGame();
+				startGame();
 			}
 			console.log(socket.player+" player has joined.");
 			socket.emit('setPlayer', socket.player);
@@ -79,6 +79,9 @@ io.sockets.on('connection', function (socket) {
 		if (qIndex <= questions.length) {
 			question = questions[qIndex];
 			qIndex++;
+		}
+		else {
+			qIndex = 0;
 		}
 		//var question = {body: '2 + 3 = ?', answer: 5};
 		io.sockets.emit('invadeTerritory', data);

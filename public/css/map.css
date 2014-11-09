@@ -62,17 +62,13 @@ html, body, div {
     left:120px;
 }
 #editor {
-    position: relative;
-    width: 80%;
-    height: 300px;
+    margin: 0 auto;
+    display: block;
+    width: 70%;
+    height: 200px;
     border:1px solid #fff;
     -size: 15px;
 }
-#edit-panel {
-    position:relative;
-    left: 80px;
-}
-
 #rooms {
     position: absolute;
     top: -7px;
@@ -291,7 +287,7 @@ img {
 
 .question{
     color: white;
-    font-size: 40px;
+    font-size: 22px;
     text-align: center;
     margin: 15px 60px;
     border-bottom: 1px solid white;
@@ -320,12 +316,13 @@ textarea{
 .console-response
 {
     font-size: 16px;
-    width: 570px;
+    width: 535px;
     height: 35px;
     border-radius: 5px;
 }
 .answer{
-    margin-left: 89px;
+    margin-left: 128px;
+    margin-top: 20px;
     position: static;
 }
 .posAns{
@@ -347,10 +344,11 @@ textarea{
 
 /*----------- Monika ----------*/
 .question{
-    width: 700px;
+    width: 615px;
     overflow-y: auto;
-    margin-top: 60px;
-    max-height: 250px;
+    margin-top: 30px;
+    margin-left: 130px;
+    max-height: 150px;
     border: none;
 }
 #code-compilation-form form .question{
