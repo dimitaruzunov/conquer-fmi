@@ -4,7 +4,7 @@
 
 	body.on("click", "#btn-join", function(e) {
 		e.preventDefault();
-		window.location.href = $(this).attr("href") + "/" + $("#username").val();
+		window.location.href = $(this).attr("href");
 	});
 
 	body.on("click", "#compile", function() {
@@ -54,6 +54,9 @@
 		$("#player").text(data);
 	});
 
+	socket.on('updatePoints', function() {
+		updateStat();
+	});
 	socket.on('invadeTerritory', function(data){
 		var axis = JSON.parse(data);
 		selectedArea = axis.x;

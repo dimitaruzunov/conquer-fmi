@@ -8,7 +8,7 @@ var app=express(),
 	io = require('socket.io').listen(server);
 
 var config = require('./server/config/config')[env];
-
+var qIndex = 0;
 require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/route')(app);
@@ -75,10 +75,10 @@ io.sockets.on('connection', function (socket) {
 		}
 
 	});
-	var qIndex = 0, question;
+	var question;
 	socket.on('changeTerritory', function(data){
 		console.log(questions[0]);
-		if (qIndex <= questions.length) {
+		if (qIndex < questions.length) {
 			question = questions[qIndex];
 			qIndex++;
 		}
@@ -102,6 +102,8 @@ io.sockets.on('connection', function (socket) {
 			io.sockets.emit('winPoints', JSON.stringify({winner: 3-turn, score: scores[2-turn]}));
 			changeTurn();
 		}
+		io.sockets.emit('updatePoints');
+
 		falseAns = 0;
 	});
 

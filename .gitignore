@@ -3,3 +3,4 @@ public/lib/
 .DS_Store
 database
 .idea/
+public/scripts/jquery.min.js
