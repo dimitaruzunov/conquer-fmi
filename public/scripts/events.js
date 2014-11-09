@@ -36,8 +36,8 @@
 		updateMap();
 		//$('.submit').removeAttr('disabled');
 		var pData = JSON.parse(data);
-		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
-		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
+		$("#p" + pData.turn).css("text-decoration", "underline");
+		$("#p" + (3 - pData.turn)).css("text-decoration", "none");
 
 		if (pData.turn == id){
 			enableRooms();
@@ -48,8 +48,8 @@
 
 	socket.on('changeTurns', function(data) {
 		var pData = JSON.parse(data);
-		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
-		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
+		$("#p" + pData.turn).css("text-decoration", "underline");
+		$("#p" + (3 - pData.turn)).css("text-decoration", "none");
 		updateMap();
 		resetTextFields();
 		if (pData.turn == id){
