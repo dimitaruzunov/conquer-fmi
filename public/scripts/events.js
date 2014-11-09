@@ -63,10 +63,10 @@
 		var territoryName = "d"+selectedArea;
 		var x = $("#"+territoryName).offset().left+$("#"+territoryName).width()/2-90;
 		var y = $("#"+territoryName).offset().top+$("#"+territoryName).height()/2-50;
-		$('#xAnimation').css({ 'opacity': 1});
+		$('#xAnimation').css({ 'opacity': 1, 'z-index': 100});
 		$('#xAnimation').css({ 'margin-left': x+'px'});
 		$('#xAnimation').css({ 'margin-top': y+'px'});
-		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0});},800);
+		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0, 'z-index': -9999});},800);
 		// $("#d"+axis.x).css("background-color", "blue");
 		//map[axis.x] = axis.id;
 		//updateMap()
