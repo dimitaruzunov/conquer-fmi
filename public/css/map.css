@@ -74,9 +74,10 @@ html, body, div {
     top: -7px;
     left: -7px;
 }
-.focused{
-    margin-top: 5px;
-    margin-left: 25px;
+.focused {
+    position: absolute;
+    width: 1280px;
+    margin: 5px auto;
 }
 
 
@@ -99,11 +100,6 @@ img {
     background-color: red;
 }
 
-#rooms {
-    position: absolute;
-    top: -2px;
-    left: 17px;
-}
 .darken {
     background: black;
     opacity: 0.4;
@@ -116,6 +112,11 @@ img {
 .darken:hover{
     opacity: 0.1;
 }
+.rooms-disabled {
+  background: black;
+  opacity: 0.4;
+}
+
 #map{
     position: relative;
 }

@@ -2,11 +2,6 @@
 
 	var body = $("body");
 
-	body.on("click", ".territory .free", function() {
-		attack($(this).attr("id").substring(1));
-		$(this).addClass("underAttack");
-	});
-
 	body.on("click", "#btn-join", function(e) {
 		e.preventDefault();
 		window.location.href = $(this).attr("href");
@@ -21,21 +16,34 @@
 		evaluateCode($("#code").text());
 	});
 
-	// body.on("click", "#submitAnswer", sendAnswer);
-
 	socket.on('connect', function() {
 		socket.emit('adduser', "krisko");
 	});
 
-	socket.on('changeTurns', function() {
-		turn = 3-turn;
-		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
-		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
+	socket.on('startGame', function(data) {
 		updateMap();
-		if(turn == id){
-			yourTurn();
+
+		var pData = JSON.parse(data);
+		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
+		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
+
+		if (pData.turn == id){
+			enableRooms();
 		} else {
-			//its not your turn
+			disableRooms();
+		}
+	});
+
+	socket.on('changeTurns', function(data) {
+		var pData = JSON.parse(data);
+		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
+		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
+		updateMap();
+		resetTextFields();
+		if (pData.turn == id){
+			enableRooms();
+		} else {
+			disableRooms();
 		}
 	});
 
@@ -58,10 +66,10 @@
 		var territoryName = "d"+selectedArea;
 		var x = $("#"+territoryName).offset().left+$("#"+territoryName).width()/2-90;
 		var y = $("#"+territoryName).offset().top+$("#"+territoryName).height()/2-50;
-		$('#xAnimation').css({ 'opacity': 1});
+		$('#xAnimation').css({ 'opacity': 1, 'z-index': 100});
 		$('#xAnimation').css({ 'margin-left': x+'px'});
 		$('#xAnimation').css({ 'margin-top': y+'px'});
-		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0});},800);
+		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0, 'z-index': -9999});},800);
 		// $("#d"+axis.x).css("background-color", "blue");
 		//map[axis.x] = axis.id;
 		//updateMap()
@@ -71,7 +79,10 @@
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
+<<<<<<< HEAD
 		turn = 3 - turn;		
+=======
+>>>>>>> e0556e99803dfdf68c15231316f2a758128170ab
 		checkAnswer(curQ);
 	});
 
@@ -97,6 +108,25 @@
         $('#popup').addClass('hidden');
         $('.dark').addClass('hidden');
 
+		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score).toString());
+		// $("#p2").html("Player 2 result: " + (scores[1]+=Math.floor(Math.random()*50)).toString());
+
+		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
+	});
+
+	socket.on('winPoints', function (data) {
+		var axis = JSON.parse(data);
+		//alert(selectedArea + " " + data);
+		console.log("Player"+axis.winner+" won");
+
+        var blurredBackground = $('.focused');
+        blurredBackground.removeClass('blurred');
+        $('#popup').addClass('hidden');
+        $('.dark').addClass('hidden');
+
+		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score).toString());
+		// $("#p2").html("Player 2 result: " + (scores[1]+=Math.floor(Math.random()*50)).toString());
+
 		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
 	});
 
@@ -107,15 +137,14 @@
         $('.dark').addClass('hidden');
 	});
 
-	// end game
+	socket.on('showFalseAnswer', function () {
+		disableRooms();
+	});
+
 	socket.on('endGame', function () {
 		endGame();
 	});
 
-	$(".territory").click(function(){
-		socket.emit('changeTerritory', JSON.stringify({x:$(this).index(), id:id}));
-		//selectedArea = JSON.stringify({x:$(this).index(), id:id});
-    });
 	function replayGif(){
 		var img = new Image();
 		img.src = '../img/xAnimation.gif';
