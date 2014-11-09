@@ -17,15 +17,25 @@ var attack = function (terrId) {
 
 // game ends when the time runs out
 var endGamePopup = $('#endgame-popup');
-var endGame = function () {
+var endGame = function (scores) {
 
-	showEndGamePopup();
+	showEndGamePopup(scores);
 };
 
-var showEndGamePopup = function () {
+var showEndGamePopup = function (scores) {
+	$('#p1-score').html(scores[0]);
+	$('#p2-score').html(scores[1]);
+	if (scores[0] === scores[1]) {
+		$('#winner').html('Draw');
+	} else if (scores[0] > scores[1]) {
+		$('#winner').html('Player 1');
+	} else {
+		$('#winner').html('Player 2');
+	}
 	$('#popup').hide();
 	endGamePopup.show();
 	$('.dark').show();
+	$('.player-info').addClass('hidden');
 };
 
 // var timeout;

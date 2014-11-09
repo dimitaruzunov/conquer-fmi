@@ -54,9 +54,9 @@
 		$("#player").text(data);
 	});
 
-	socket.on('updatePoints', function() {
-		updateStat();
-	});
+	// socket.on('updatePoints', function() {
+	// 	updateStat();
+	// });
 	socket.on('invadeTerritory', function(data){
 		var axis = JSON.parse(data);
 		selectedArea = axis.x;
@@ -131,8 +131,8 @@
 		disableRooms();
 	});
 
-	socket.on('endGame', function () {
-		endGame();
+	socket.on('endGame', function (scores) {
+		endGame(scores);
 	});
 
 	function replayGif(){

@@ -71,16 +71,16 @@ returnValue();
 		</div>
 
 		<!-- End game -->
-		<div id="endgame-popup" class="popup hidden">
+		<div id="endgame-popup" class="popup hidden" style="{z-index: 9999;}">
 				<h1>End of game!</h1>
 				<h2>Scores:</h2>
 				<p>Player 1 | Player 2</p>
 				<div id="scores-container">
-					<div class= "pl-score" id="p1-score">0</div>
-					<div class= "pl-score" id="p2-score">0</div>
+					<div class= "pl-score" id="p1-score"></div>
+					<div class= "pl-score" id="p2-score"></div>
 				</div>
 				<div style="clear: both;"></div>
-				<h2>Winner:</h2>
+				<h2>Winner: <div id="winner"></div></h2>
 		</div>
 		<!-- End game -->
 
