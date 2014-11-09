@@ -71,10 +71,11 @@ html, body, div {
 }
 #rooms {
     position: absolute;
-    top: -3px;
+    top: -7px;
     left: -7px;
 }
 .focused {
+    position: absolute;
     width: 1280px;
     margin: 5px auto;
 }
