@@ -45,12 +45,32 @@ var loadUpQuestion = function (question) {
 	// timeout = window.setTimeout(sendAnswer, 10000000);
 	console.log("invoked/loadUpQuestion");
 	curQ = question;
-	setTimeout(function() {
-        var blurredBackground = $('.focused');
-        blurredBackground.addClass('blurred');
-        $('#popup .question').html(question.body);
-        $('#popup').removeClass('hidden');
-        $('.dark').removeClass('hidden');}, 950);
+	if (question.codeable) {
+		setTimeout(function() {
+	        var blurredBackground = $('.focused');
+	        blurredBackground.addClass('blurred');
+	        editor.setSession(ace.createEditSession('function returnValue(){\n\n}\nreturnValue();'));
+	        editor.setReadOnly(false);
+	        editor.getSession().setMode("ace/mode/javascript");
+	        $('#popup .question').html(question.body);
+	        $('#popup').removeClass('hidden');
+	        $('.dark').removeClass('hidden');
+	        $('#answer').css('width', 535 + 'px');
+	   		$('#compile').removeClass('hidden');}, 950);
+	} else if (!question.codeable) {
+		setTimeout(function() {
+	        var blurredBackground = $('.focused');
+	        blurredBackground.addClass('blurred');
+	        $('#popup .question').html(/*question.body*/"What's the result of the following compilation?");
+	        editor.setSession(ace.createEditSession(question.body));
+	        editor.setReadOnly(true);
+			editor.getSession().setMode("ace/mode/javascript");
+			$('#editor').prop('readonly', true);
+			$('#answer').css('width', 80+535 + 'px');
+	        $('#popup').removeClass('hidden');
+	        $('.dark').removeClass('hidden');
+	    	$('#compile').addClass('hidden');}, 950);
+	}
 };
 
 var checkAnswer = function (question) {

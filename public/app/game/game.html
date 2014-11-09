@@ -97,6 +97,7 @@ returnValue();
 	<script src="../../ace-builds-master/src-min-noconflict/ace.js"></script>
 	<script>
 		var editor = ace.edit("editor");
+		editor.setReadOnly(false);
     	editor.setTheme("ace/theme/xcode");
     	editor.getSession().setMode("ace/mode/javascript");
 	</script>

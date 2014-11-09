@@ -31,7 +31,6 @@ function changeTurn(){
 
 function getData(n) {
 	questions = n;
-	console.log(questions);
 };
 
 function getDbId() {
@@ -42,7 +41,6 @@ function getDbId() {
 		}
 		return getData(data);
 	});
-	console.log('data loaded');
 };
 function startGame() {
 	// game timer
@@ -77,7 +75,7 @@ io.sockets.on('connection', function (socket) {
 	});
 	var question, qIndex=0;
 	socket.on('changeTerritory', function(data){
-		console.log(questions[0]);
+		console.log(questions);
 		if (qIndex < questions.length) {
 			question = questions[qIndex];
 			qIndex++;
@@ -85,7 +83,6 @@ io.sockets.on('connection', function (socket) {
 		else {
 			qIndex = 0;
 		}
-		//var question = {body: '2 + 3 = ?', answer: 5};
 		io.sockets.emit('invadeTerritory', data);
 		io.sockets.emit('loadUpQuestion', JSON.stringify(question));
 	});
