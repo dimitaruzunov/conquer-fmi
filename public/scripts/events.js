@@ -2,6 +2,8 @@
 
 	var body = $("body");
 
+	updateMap();
+
 	body.on("click", ".territory .free", function() {
 		attack($(this).attr("id").substring(1));
 		$(this).addClass("underAttack");
@@ -27,13 +29,19 @@
 		socket.emit('adduser', "krisko");
 	});
 
-	socket.on('changeTurns', function() {
-		turn = 3-turn;
-		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
-		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
+	socket.on('startGame', function(data) {
+		var pData = JSON.parse(data);
+		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
+		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
+	});
+
+	socket.on('changeTurns', function(data) {
+		var pData = JSON.parse(data);
+		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
+		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
 		updateMap();
-		if(turn == id){
-			yourTurn();
+		if(pData.turn == id){
+			// yourTurn();
 		} else {
 			//its not your turn
 		}
@@ -68,11 +76,8 @@
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
-		turn = 3 - turn;
-		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
-		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
-		$("#p1").html("Player 1 result: " + (plResult_1+=Math.floor(Math.random()*50)).toString());
-		$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());
+		// $("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
+		// $("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
 		checkAnswer(curQ);
 	});
 
@@ -97,6 +102,25 @@
         blurredBackground.removeClass('blurred');
         $('#popup').addClass('hidden');
         $('.dark').addClass('hidden');
+
+		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score).toString());
+		// $("#p2").html("Player 2 result: " + (scores[1]+=Math.floor(Math.random()*50)).toString());
+
+		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
+	});
+
+	socket.on('winPoints', function (data) {
+		var axis = JSON.parse(data);
+		//alert(selectedArea + " " + data);
+		console.log("Player"+axis.winner+" won");
+
+        var blurredBackground = $('.focused');
+        blurredBackground.removeClass('blurred');
+        $('#popup').addClass('hidden');
+        $('.dark').addClass('hidden');
+
+		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score).toString());
+		// $("#p2").html("Player 2 result: " + (scores[1]+=Math.floor(Math.random()*50)).toString());
 
 		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
 	});

@@ -18,7 +18,7 @@ var Question = require('mongoose').model('Question');
 server.listen(config.port);
 //TODO: move on seperate file
 var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
-var usernames = {}, users={}, turn=1, falseAns = 0, questions = [];
+var usernames = {}, users={}, turn=1, falseAns = 0, questions = [], scores;
 for(var i=0; i<18; i++)map[i]=0;
 
 users[1] = false;
@@ -26,7 +26,7 @@ users[2] = false;
 
 function changeTurn(){
 	turn = 3-turn;
-	io.sockets.emit('changeTurns');
+	io.sockets.emit('changeTurns', JSON.stringify({turn: turn}));
 }
 
 function getData(n) {
@@ -50,6 +50,9 @@ function startGame() {
 		io.sockets.emit('endGame');
 	}, 2000000);
 	getDbId();
+	scores = [0, 0];
+	turn = 1;
+	io.sockets.emit('startGame', JSON.stringify({turn: turn}));
 };
 
 io.sockets.on('connection', function (socket) {
@@ -65,7 +68,6 @@ io.sockets.on('connection', function (socket) {
 				socket.player = 2;
 				usernames[username] = username;
 				users[2] = true;
-				changeTurn();
 				startGame();
 			}
 			console.log(socket.player+" player has joined.");
@@ -91,13 +93,16 @@ io.sockets.on('connection', function (socket) {
 	socket.on('trueAnswer', function() {
 		console.log("Player"+turn+" answered!");
 		if (turn == socket.player) {
-			console.log("Player"+socket.player+" has answered correctly!")
-			io.sockets.emit('winTerritory', JSON.stringify({winner: socket.player}));
+			console.log("Player"+socket.player+" has answered correctly!");
+			scores[turn-1] += 100;
+			io.sockets.emit('winTerritory', JSON.stringify({winner: socket.player, score: scores[turn-1]}));
 			changeTurn();
 		} else {
-			// io.sockets.emit('')
+			scores[2-turn] += 50;
+			io.sockets.emit('winPoints', JSON.stringify({winner: 3-turn, score: scores[2-turn]}));
+			changeTurn();
 		}
-
+		falseAns = 0;
 	});
 
 	socket.on('falseAnswer', function() {
