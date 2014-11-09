@@ -31,7 +31,7 @@ function startGame() {
 	// game timer
 	setTimeout(function () {
 		io.sockets.emit('endGame');
-	}, 30000);
+	}, 3000);
 }
 
 io.sockets.on('connection', function (socket) {

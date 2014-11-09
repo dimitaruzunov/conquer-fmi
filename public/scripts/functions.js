@@ -1,26 +1,36 @@
-// game ends when the time runs out
-var endGame = function () {
-	showEndGamePopup();
-};
-
-var showEndGamePopup = function () {
-	$("#popup").hide();
-	$("#endgame-popup").show();
-};
-
 var turn = 2;
 $("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
 $("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
 var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
 var id, selectedArea;
+
+// players
+var p1 = $("#p1");
+var p2 = $("#p2");
+
+// scores
 var plResult_1 = 0, plResult_2 = 0;
-$("#p1").html("Player 1 result: " + plResult_1.toString());
-$("#p2").html("Player 2 result: " + plResult_2.toString());
+
+p1.html("Player 1 result: " + plResult_1.toString());
+p2.html("Player 2 result: " + plResult_2.toString());
 var yourTurn = function () {
 	console.log("Your Turn! Player"+turn);
 };
 var attack = function (terrId) {
 	socketOnAttack(terrId);
+};
+
+// game ends when the time runs out
+var endGamePopup = $('#endgame-popup');
+var endGame = function () {
+
+	showEndGamePopup();
+};
+
+var showEndGamePopup = function () {
+	$('#popup').hide();
+	endGamePopup.show();
+	$('.dark').show();
 };
 
 // var timeout;

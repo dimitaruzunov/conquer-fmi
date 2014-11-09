@@ -1,4 +1,7 @@
-html, body, div{padding:0px;margin:0px;}
+html, body, div {
+  padding:0px;margin:0px;
+  font-family: Helvetica, Verdana;
+}
 #p1 {
     position:absolute;
     top: 560px;
@@ -43,7 +46,7 @@ html, body, div{padding:0px;margin:0px;}
     width: 80%;
     height: 300px;
     border:1px solid #fff;
-    font-size: 15px;
+    -size: 15px;
 }
 #edit-panel {
     position:relative;
@@ -238,8 +241,8 @@ img {
     left: 195px;
     width: 875px;
     height: 525px;
-    border: 3px solid yellow;
-    border-radius: 40px;
+    border: 2px solid #555;
+    border-radius: 20px;
 }
 
 .blurred {
@@ -338,6 +341,29 @@ textarea{
 }
 
 /* ----------- End game ----------- */
-#endgame-popup h1 {
+#endgame-popup {
   color: white;
+}
+
+#endgame-popup h1, h2, p {
+  text-align: center;
+}
+
+#endgame-popup p {
+  font-size: 20px;
+}
+
+#scores-container {
+  width: 204px;
+  margin: auto;
+}
+
+.pl-score {
+  background: grey;
+  width: 100px;
+  height: 35px;
+  float: left;
+  text-align: center;
+  font-size: 30px;
+  border: 1px solid #444;
 }

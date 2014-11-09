@@ -55,7 +55,7 @@
 			<p class="question">What is the sum of every even nums?</p>
 			<div id="edit-panel">
 				<div id="editor">function returnValue(){
-	
+
 }
 returnValue();
 				</div>
@@ -66,9 +66,21 @@ returnValue();
 			</div>
 			<input type="submit" value="Submit" class="submit"/>
 		</div>
+
+		<!-- End game -->
 		<div id="endgame-popup" class="popup hidden">
-				<h1>Game over! Results:</h1>
+				<h1>End of game!</h1>
+				<h2>Scores:</h2>
+				<p>Player 1 | Player 2</p>
+				<div id="scores-container">
+					<div class= "pl-score" id="p1-score">0</div>
+					<div class= "pl-score" id="p2-score">0</div>
+				</div>
+				<div style="clear: both;"></div>
+				<h2>Winner:</h2>
 		</div>
+		<!-- End game -->
+
     	<div id="find-answer-of-code-form" class="hidden">
         	<form>
             	<p class="question">What is the sum of every even nums?</p>
@@ -89,4 +101,3 @@ returnValue();
 	<script src="../../scripts/events.js"></script>
 </body>
 </html>
-	
