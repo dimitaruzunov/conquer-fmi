@@ -17,9 +17,9 @@ var Question = require('mongoose').model('Question');
 
 server.listen(config.port);
 //TODO: move on seperate file
-var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
+// var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
 var usernames = {}, users={}, turn=1, falseAns = 0, questions = [], scores;
-for(var i=0; i<18; i++)map[i]=0;
+// for(var i=0; i<18; i++)map[i]=0;
 
 users[1] = false;
 users[2] = false;
