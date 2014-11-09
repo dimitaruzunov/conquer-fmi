@@ -102,5 +102,5 @@ var updateCorrectness = function (correct) {
 	}
 };
 //TODO: add config file
-var socket = io.connect('http://10.0.201.34:3030');
-//var socket = io.connect('http://localhost:3030');
+//var socket = io.connect('http://10.0.201.34:3030');
+var socket = io.connect('http://localhost:3030');
