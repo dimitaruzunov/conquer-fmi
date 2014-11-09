@@ -24,6 +24,7 @@
 
 	socket.on('changeTurns', function() {
 		turn = 3-turn;
+		updateMap();
 		if(turn == id){
 			yourTurn();
 		}else{
@@ -55,6 +56,11 @@
 		//updateMap()
 	});
 
+	$('.submit').on('click', function() {
+		$("#popup").addClass('hidden');
+		$(".dark").addClass('hidden');
+		$(".focused").removeClass('blurred');
+	})
 	socket.on('selectArea', function(data){
 		var axis = JSON.parse(data);
 		map[axis.y][axis.x] = axis.id;

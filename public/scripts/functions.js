@@ -12,7 +12,8 @@ var showEndGamePopup() {
 };
 
 var turn = 2;
-var map = [], id, selectedArea;
+var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
+var id, selectedArea;
 var yourTurn = function () {
 	console.log("Your Turn! Player"+turn);
 };
@@ -79,8 +80,6 @@ var updateCorrectness = function (correct) {
 		$("#correct").text("not correct");
 	}
 };
-
-for(var i=0; i<18; i++)map[i]=0;
 //TODO: add config file
 var socket = io.connect('http://localhost:3030');
 //var socket = io.connect('http://localhost:8080');
