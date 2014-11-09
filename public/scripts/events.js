@@ -84,6 +84,11 @@
 		// hide popup
 	});
 
+	// end game
+	socket.on('endGame', function () {
+		endGame();
+	});
+
 	$(".territory").click(function(){
 		socket.emit('changeTerritory', JSON.stringify({x:$(this).index(), id:id}));
 		//selectedArea = JSON.stringify({x:$(this).index(), id:id});
