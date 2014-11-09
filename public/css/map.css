@@ -1,6 +1,9 @@
 html, body, div {
   padding:0px;margin:0px;
 }
+body{
+    background-color: rgb(161, 161, 161);
+}
 @font-face {
     font-family: monster;
     src: url('../fonts/mrsmonster.ttf');
@@ -98,9 +101,9 @@ html, body, div {
     left: -7px;
 }
 .focused {
-    position: absolute;
+    position: relative;
     width: 1280px;
-    margin: 5px auto;
+    margin: 0px auto;
 }
 
 
