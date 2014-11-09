@@ -71,7 +71,7 @@ html, body, div {
 }
 #rooms {
     position: absolute;
-    top: -7px;
+    top: -3px;
     left: -7px;
 }
 .focused {
@@ -99,11 +99,6 @@ img {
     background-color: red;
 }
 
-#rooms {
-    position: absolute;
-    top: -2px;
-    left: 17px;
-}
 .darken {
     background: black;
     opacity: 0.4;
