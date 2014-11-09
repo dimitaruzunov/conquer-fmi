@@ -70,6 +70,7 @@ io.sockets.on('connection', function (socket) {
 			}
 			console.log(socket.player+" player has joined.");
 			socket.emit('setPlayer', socket.player);
+			io.sockets.emit('updateNames', JSON.stringify(usernames))
 		}
 
 	});

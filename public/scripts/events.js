@@ -6,7 +6,13 @@
 
 	body.on("click", "#btn-join", function(e) {
 		e.preventDefault();
-		window.location.href = $(this).attr("href");
+		if($("#username").val()){
+			createCookie("username", $("#username").val(), 2)
+			window.location.href = $(this).attr("href");
+		}else{
+			alert("Fill username!");
+		}
+		
 	});
 
 	body.on("click", "#compile", function() {
@@ -19,7 +25,11 @@
 	});
 
 	socket.on('connect', function() {
-		socket.emit('adduser', getCookie("username"));
+		if(getCookie("username")){
+			socket.emit('adduser', getCookie("username"));
+		}else{
+			window.location.href = "/";
+		}		
 	});
 
 	socket.on('startGame', function(data) {
@@ -54,6 +64,25 @@
 		if(id==1) $("#player").css("color", "blue");
 		if(id==2) $("#player").css("color", "red");
 		$("#player").text(getCookie("username"));
+	});
+
+	socket.on('updateNames', function(data) {
+		data1 = JSON.parse(data);
+		for(var key in data1){
+			if(key==getCookie("username")){
+				if(id==1){
+					$("#p1").text(key);
+				}else{
+					$("#p2").text(key);
+				}
+			}else{
+				if(id==1){
+					$("#p2").text(key);
+				}else{
+					$("#p1").text(key);
+				}
+			}
+		}
 	});
 
 	// socket.on('updatePoints', function() {
