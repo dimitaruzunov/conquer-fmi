@@ -1,3 +1,16 @@
+// game timer
+var gameTimer = window.setTimeout(endGame, 30000);
+
+// game ends when the time runs out
+var endGame = function () {	
+	showEndGamePopup();
+};
+
+var showEndGamePopup() {
+	$("#popup").hide();
+	$("#endgame-popup").show();
+};
+
 var turn = 2;
 $("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
 $("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
@@ -13,8 +26,8 @@ var attack = function (terrId) {
 	socketOnAttack(terrId);
 };
 
-var timeout;
-var questionTime;
+// var timeout;
+// var questionTime;
 var loadUpQuestion = function (question) {
 	//questionTime = new Date().getTime();
 	// timeout = window.setTimeout(sendAnswer, 10000000);
