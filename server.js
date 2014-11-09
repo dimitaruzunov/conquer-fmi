@@ -23,7 +23,7 @@ var usernames = {}, users={}, turn=1, falseAns = 0, questions = [], scores = [];
 
 users[1] = false;
 users[2] = false;
-
+var qIndex=0;
 function changeTurn(){
 	turn = 3-turn;
 	io.sockets.emit('changeTurns', JSON.stringify({turn: turn}));
@@ -73,7 +73,7 @@ io.sockets.on('connection', function (socket) {
 		}
 
 	});
-	var question, qIndex=0;
+	var question;
 	socket.on('changeTerritory', function(data){
 		console.log(questions);
 		if (qIndex < questions.length) {
