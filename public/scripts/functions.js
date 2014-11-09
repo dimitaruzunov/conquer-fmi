@@ -8,8 +8,8 @@ var id, selectedArea;
 var p1 = $("#p1");
 var p2 = $("#p2");
 
-p1.html("Player 1 result: " + 0);
-p2.html("Player 2 result: " + 0);
+p1.html("Player 1");
+p2.html("Player 2");
 
 var attack = function (terrId) {
 	socketOnAttack(terrId);
@@ -102,5 +102,4 @@ var updateCorrectness = function (correct) {
 	}
 };
 //TODO: add config file
-var socket = io.connect('http://10.0.201.34:3030');
-//var socket = io.connect('http://localhost:3030');
+var socket = io.connect('http://localhost:3030');
