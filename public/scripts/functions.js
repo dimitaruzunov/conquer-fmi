@@ -6,7 +6,7 @@ var endGame = function () {
 	showEndGamePopup();
 };
 
-var showEndGamePopup() {
+var showEndGamePopup = function() {
 	$("#popup").hide();
 	$("#endgame-popup").show();
 };
