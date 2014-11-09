@@ -1,12 +1,9 @@
-// game timer
-var gameTimer = window.setTimeout(endGame, 30000);
-
 // game ends when the time runs out
-var endGame = function () {	
+var endGame = function () {
 	showEndGamePopup();
 };
 
-var showEndGamePopup = function() {
+var showEndGamePopup = function () {
 	$("#popup").hide();
 	$("#endgame-popup").show();
 };
