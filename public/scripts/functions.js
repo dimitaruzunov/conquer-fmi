@@ -1,3 +1,4 @@
+var curQ;
 var turn = 2;
 $("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
 $("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
@@ -38,19 +39,20 @@ var showEndGamePopup = function () {
 var loadUpQuestion = function (question) {
 	//questionTime = new Date().getTime();
 	// timeout = window.setTimeout(sendAnswer, 10000000);
+	console.log("invoked/loadUpQuestion");
+	curQ = question;
 	setTimeout(function() {
         var blurredBackground = $('.focused');
         blurredBackground.addClass('blurred');
         $('#popup .question').html(question.body);
         $('#popup').removeClass('hidden');
         $('.dark').removeClass('hidden');}, 950);
-	//openPopup(question);
 };
 
-var openPopup = function (question) {
+var checkAnswer = function (question) {
 	//$("#question").text(question.body);
 	//$("#code").val();
-	//var userAns = prompt(question.body);
+	var userAns = $("#answer").val();
 
 	// window.clearTimeout(timeout);
 	console.log("Answering question for territory "+selectedArea)

@@ -2,33 +2,54 @@ html, body, div {
   padding:0px;margin:0px;
   font-family: Helvetica, Verdana;
 }
+@font-face {
+    font-family: monster;
+    src: url(../fonts/mrsmonster.ttf);
+}
+@font-face {
+    font-face: roboto;
+    src: url('../fonts/Roboto.ttf');
+}
 #p1 {
     position:absolute;
-    top: 560px;
+    top: 530px;
     left: 40px;
-    width: 150px;
+    width: 170px;
     height: 40px;
-    background-color: red;
+    font-family: monster;
+    font-size: 22px;
+    color: white;
+
 }
 #p2 {
     position:absolute;
-    top:560px;
+    top:530px;
     left: 1100px;
-    width: 150px;
+    width: 170px;
     height: 40px;
-    background-color: red;
+    font-family: monster;
+    font-size: 22px;
+    color: white;
+
 }
 #pl-1 {
     position:absolute;
-    top:520px;
+    top:485px;
     left: 40px;
     width: 150px;
+    color: blue;
+    font-size: 18px;
+    font-family: roboto;
+
 }
 #pl-2 {
     position:absolute;
-    top:520px;
+    top:485px;
     left: 1100px;
     width: 150px;
+    color: red;
+    font-size:18px;
+    font-family: roboto;
 }
 #xAnimation {
     position: absolute;
