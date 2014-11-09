@@ -2,6 +2,8 @@
 
 	var body = $("body");
 
+
+
 	body.on("click", "#btn-join", function(e) {
 		e.preventDefault();
 		window.location.href = $(this).attr("href");
@@ -17,7 +19,7 @@
 	});
 
 	socket.on('connect', function() {
-		socket.emit('adduser', "krisko");
+		socket.emit('adduser', getCookie("username"));
 	});
 
 	socket.on('startGame', function(data) {
@@ -51,7 +53,7 @@
 		id = parseInt(data);
 		if(id==1) $("#player").css("color", "blue");
 		if(id==2) $("#player").css("color", "red");
-		$("#player").text(data);
+		$("#player").text(getCookie("username"));
 	});
 
 	// socket.on('updatePoints', function() {
