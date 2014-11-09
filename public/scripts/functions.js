@@ -1,12 +1,9 @@
-// game timer
-var gameTimer = window.setTimeout(endGame, 30000);
-
 // game ends when the time runs out
-var endGame = function () {	
+var endGame = function () {
 	showEndGamePopup();
 };
 
-var showEndGamePopup() {
+var showEndGamePopup = function () {
 	$("#popup").hide();
 	$("#endgame-popup").show();
 };
@@ -34,6 +31,7 @@ var loadUpQuestion = function (question) {
 	setTimeout(function() {
         var blurredBackground = $('.focused');
         blurredBackground.addClass('blurred');
+        $('#popup .question').html(question.body);
         $('#popup').removeClass('hidden');
         $('.dark').removeClass('hidden');}, 950);
 	//openPopup(question);
@@ -55,7 +53,7 @@ var openPopup = function (question) {
 };
 
 var evaluateCode = function (code) {
-	$("#answer").text(eval(code));
+	$(".console-response").val(eval(code));
 };
 
 var updateStats = function (status) {

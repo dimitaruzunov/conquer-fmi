@@ -12,6 +12,11 @@
 		window.location.href = $(this).attr("href") + "/" + $("#username").val();
 	});
 
+	body.on("click", "#compile", function() {
+		var code = editor.getSession().getValue();
+		evaluateCode(code);
+	});
+
 	body.on("click", "#run", function() {
 		evaluateCode($("#code").text());
 	});
@@ -29,7 +34,7 @@
 		updateMap();
 		if(turn == id){
 			yourTurn();
-		}else{
+		} else {
 			//its not your turn
 		}
 	});
@@ -91,6 +96,11 @@
 
 	socket.on('noWinTerritory', function () {
 		// hide popup
+	});
+
+	// end game
+	socket.on('endGame', function () {
+		endGame();
 	});
 
 	$(".territory").click(function(){

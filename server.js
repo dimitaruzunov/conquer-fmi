@@ -27,6 +27,13 @@ function changeTurn(){
 	io.sockets.emit('changeTurns');
 }
 
+function startGame() {
+	// game timer
+	setTimeout(function () {
+		io.sockets.emit('endGame');
+	}, 20000);
+}
+
 io.sockets.on('connection', function (socket) {
 	socket.on('adduser', function(username){
 		if(io.eio.clientsCount<=2){
@@ -41,6 +48,7 @@ io.sockets.on('connection', function (socket) {
 				usernames[username] = username;
 				users[2] = true;
 				changeTurn();
+				startGame();
 			}
 			console.log(socket.player+" player has joined.");
 			socket.emit('setPlayer', socket.player);
@@ -63,7 +71,7 @@ io.sockets.on('connection', function (socket) {
 		} else {
 			// io.sockets.emit('')
 		}
-		
+
 	});
 
 	socket.on('falseAnswer', function() {
