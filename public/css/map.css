@@ -3,7 +3,7 @@ html, body, div {
 }
 @font-face {
     font-family: monster;
-    src: url(../fonts/mrsmonster.ttf);
+    src: url('../fonts/mrsmonster.ttf');
 }
 @font-face {
     font-face: roboto;
@@ -12,6 +12,7 @@ html, body, div {
 .player-info{
     left: 490px;
     background-image: url("../img/whiteBox.png");
+    background-repeat: no-repeat;
     width: 300px;
 }
 

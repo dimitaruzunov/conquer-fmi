@@ -8,8 +8,8 @@ var id, selectedArea;
 var p1 = $("#p1");
 var p2 = $("#p2");
 
-p1.html("Player 1 result: " + 0);
-p2.html("Player 2 result: " + 0);
+p1.html("Player 1");
+p2.html("Player 2");
 
 var attack = function (terrId) {
 	socketOnAttack(terrId);
@@ -21,11 +21,6 @@ var endGame = function () {
 
 	showEndGamePopup();
 };
-
-var updateStat = function() {
-	$("#p1").html("Player 1 result: " + (plResult_1+=Math.floor(Math.random()*50)).toString());
-	$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());
-}
 
 var showEndGamePopup = function () {
 	$('#popup').hide();
