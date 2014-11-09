@@ -112,7 +112,7 @@
 	socket.on('winPoints', function (data) {
 		var axis = JSON.parse(data);
 		//alert(selectedArea + " " + data);
-		console.log("Player"+axis.winner+" won");
+		console.log("Player "+axis.winner+" won");
 
         var blurredBackground = $('.focused');
         blurredBackground.removeClass('blurred');
@@ -120,6 +120,7 @@
         $('.dark').addClass('hidden');
 
 		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score));
+		$("#score-" + axis.winner).html(axis.score);
 	});
 
 	socket.on('noWinTerritory', function () {

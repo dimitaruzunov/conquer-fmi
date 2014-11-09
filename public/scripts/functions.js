@@ -165,5 +165,5 @@ function deleteCookie( name ) {
 	document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
 }
 //TODO: add config file
-var socket = io.connect('http://192.168.43.54:3030');
-//var socket = io.connect('http://localhost:3030');
+//var socket = io.connect('http://192.168.43.54:3030');
+var socket = io.connect('http://localhost:3030');
