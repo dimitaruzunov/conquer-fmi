@@ -12,6 +12,11 @@
 		window.location.href = $(this).attr("href") + "/" + $("#username").val();
 	});
 
+	body.on("click", "#compile", function() {
+		var code = editor.getSession().getValue();
+		evaluateCode(code);
+	});
+
 	body.on("click", "#run", function() {
 		evaluateCode($("#code").text());
 	});
@@ -24,10 +29,12 @@
 
 	socket.on('changeTurns', function() {
 		turn = 3-turn;
+		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
+		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
 		updateMap();
 		if(turn == id){
 			yourTurn();
-		}else{
+		} else {
 			//its not your turn
 		}
 	});
@@ -44,13 +51,14 @@
 		selectedArea = axis.x;
 		console.log("You are fighgting for:"+selectedArea);
 		replayGif();
+		$('#xAnimation').css('background-image', 'url(\'\')' );
 		var territoryName = "d"+selectedArea;
 		var x = $("#"+territoryName).offset().left+$("#"+territoryName).width()/2-90;
 		var y = $("#"+territoryName).offset().top+$("#"+territoryName).height()/2-50;
 		$('#xAnimation').css({ 'opacity': 1});
 		$('#xAnimation').css({ 'margin-left': x+'px'});
 		$('#xAnimation').css({ 'margin-top': y+'px'});
-		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0});},900);
+		setTimeout(function() {$('#xAnimation').css({ 'opacity': 0});},800);
 		// $("#d"+axis.x).css("background-color", "blue");
 		//map[axis.x] = axis.id;
 		//updateMap()
@@ -60,7 +68,13 @@
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
-	})
+		turn = 3 - turn;
+		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
+		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
+		$("#p1").html("Player 1 result: " + (plResult_1+=Math.floor(Math.random()*50)).toString());
+		$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());	
+	});
+
 	socket.on('selectArea', function(data){
 		var axis = JSON.parse(data);
 		map[axis.y][axis.x] = axis.id;

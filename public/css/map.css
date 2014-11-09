@@ -1,5 +1,32 @@
 html, body, div{padding:0px;margin:0px;}
-
+#p1 {
+    position:absolute;
+    top: 560px;
+    left: 40px;
+    width: 150px;
+    height: 40px;
+    background-color: red;
+}
+#p2 {
+    position:absolute;
+    top:560px;
+    left: 1100px;
+    width: 150px;
+    height: 40px;
+    background-color: red;
+}
+#pl-1 {
+    position:absolute;
+    top:520px;
+    left: 40px;
+    width: 150px;
+}
+#pl-2 {
+    position:absolute;
+    top:520px;
+    left: 1100px;
+    width: 150px;
+}
 #xAnimation {
     position: absolute;
     z-index:2;
