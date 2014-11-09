@@ -29,9 +29,9 @@ var showEndGamePopup = function (scores) {
 	if (scores[0] === scores[1]) {
 		$('#winner').html('Draw');
 	} else if (scores[0] > scores[1]) {
-		$('#winner').html('Player 1');
+		$('#winner').html($("p1").val());
 	} else {
-		$('#winner').html('Player 2');
+		$('#winner').html($("p2").val());
 	}
 	$('#popup').hide();
 	endGamePopup.show();

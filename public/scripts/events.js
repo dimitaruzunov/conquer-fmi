@@ -72,14 +72,18 @@
 			if(key==getCookie("username")){
 				if(id==1){
 					$("#p1").text(key);
+					$("#end-pl1").text(key);
 				}else{
 					$("#p2").text(key);
+					$("#end-pl2").text(key);
 				}
 			}else{
 				if(id==1){
 					$("#p2").text(key);
+					$("#end-pl2").text(key);
 				}else{
 					$("#p1").text(key);
+					$("#end-pl1").text(key);
 				}
 			}
 		}
