@@ -13,10 +13,12 @@ require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/route')(app);
 
+var Question = require('mongoose').model('Question');
+
 server.listen(config.port);
 //TODO: move on seperate file
 var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
-var usernames = {}, users={}, turn=1, falseAns = 0;
+var usernames = {}, users={}, turn=1, falseAns = 0, questions = [];
 for(var i=0; i<18; i++)map[i]=0;
 
 users[1] = false;
@@ -27,11 +29,27 @@ function changeTurn(){
 	io.sockets.emit('changeTurns');
 }
 
+function getData(n) {
+	questions = n;
+	console.log(questions);
+}
+
+function getDbId() {
+	Question.find({}).exec(function(err, data) {
+		if (err) {
+			console.log('Cant find questions ' + err);
+			return;
+		}
+		return getData(data);
+	});
+	console.log('data loaded');
+}
 function startGame() {
 	// game timer
 	setTimeout(function () {
 		io.sockets.emit('endGame');
 	}, 20000);
+	getDbId();
 }
 
 io.sockets.on('connection', function (socket) {
@@ -55,9 +73,14 @@ io.sockets.on('connection', function (socket) {
 		}
 
 	});
-
+	var qIndex = 0, question;
 	socket.on('changeTerritory', function(data){
-		var question = {body: '2 + 3 = ?', answer: 5};
+		console.log(questions[0]);
+		if (qIndex <= questions.length) {
+			question = questions[qIndex];
+			qIndex++;
+		}
+		//var question = {body: '2 + 3 = ?', answer: 5};
 		io.sockets.emit('invadeTerritory', data);
 		io.sockets.emit('loadUpQuestion', JSON.stringify(question));
 	});
