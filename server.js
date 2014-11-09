@@ -48,7 +48,7 @@ function startGame() {
 	// game timer
 	setTimeout(function () {
 		io.sockets.emit('endGame', scores);
-	}, 20000);
+	}, 2000000);
 	getDbId();
 	scores = [0, 0];
 	turn = 1;
@@ -75,7 +75,7 @@ io.sockets.on('connection', function (socket) {
 		}
 
 	});
-	var question;
+	var question, qIndex=0;
 	socket.on('changeTerritory', function(data){
 		console.log(questions[0]);
 		if (qIndex < questions.length) {
