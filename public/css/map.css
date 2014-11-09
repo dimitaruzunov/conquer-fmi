@@ -9,6 +9,12 @@ html, body, div {
     font-face: roboto;
     src: url('../fonts/Roboto.ttf');
 }
+.player-info{
+    left: 490px;
+    background-image: url("../img/whiteBox.png");
+    width: 300px;
+}
+
 #p1 {
     position:absolute;
     top: 530px;
@@ -32,14 +38,13 @@ html, body, div {
 
 }
 #pl-1 {
-    position:absolute;
-    top:485px;
+    position: absolute;
+    top: 485px;
     left: 40px;
     width: 150px;
     color: blue;
     font-size: 18px;
     font-family: roboto;
-
 }
 #pl-2 {
     position:absolute;
@@ -49,6 +54,21 @@ html, body, div {
     color: red;
     font-size:18px;
     font-family: roboto;
+}
+#score-1, #score-2{
+    position: absolute;
+    top: 510px;
+    font-size: 50px;
+    font-family: monster;
+    color: white;
+    width: 155px;
+    text-align: center;
+}
+#score-1{
+    left: 260px;
+}
+#score-2{
+    left: 865px;
 }
 #xAnimation {
     position: absolute;
