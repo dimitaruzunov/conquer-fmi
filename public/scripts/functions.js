@@ -1,5 +1,24 @@
+// game timer
+var gameTimer = window.setTimeout(endGame, 30000);
+
+// game ends when the time runs out
+var endGame = function () {	
+	showEndGamePopup();
+};
+
+var showEndGamePopup() {
+	$("#popup").hide();
+	$("#endgame-popup").show();
+};
+
 var turn = 2;
-var map = [], id, selectedArea;
+$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
+$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
+var map = [1,1,1,0,0,2,2,0,1,1,1,1,0,2,2,2,2,2];
+var id, selectedArea;
+var plResult_1 = 0, plResult_2 = 0;
+$("#p1").html("Player 1 result: " + plResult_1.toString());
+$("#p2").html("Player 2 result: " + plResult_2.toString());
 var yourTurn = function () {
 	console.log("Your Turn! Player"+turn);
 };
@@ -7,8 +26,8 @@ var attack = function (terrId) {
 	socketOnAttack(terrId);
 };
 
-var timeout;
-var questionTime;
+// var timeout;
+// var questionTime;
 var loadUpQuestion = function (question) {
 	//questionTime = new Date().getTime();
 	// timeout = window.setTimeout(sendAnswer, 10000000);
@@ -67,8 +86,6 @@ var updateCorrectness = function (correct) {
 		$("#correct").text("not correct");
 	}
 };
-
-for(var i=0; i<18; i++)map[i]=0;
 //TODO: add config file
 var socket = io.connect('http://localhost:3030');
 //var socket = io.connect('http://localhost:8080');
