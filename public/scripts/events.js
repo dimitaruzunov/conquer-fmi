@@ -72,7 +72,8 @@
 		$("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
 		$("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
 		$("#p1").html("Player 1 result: " + (plResult_1+=Math.floor(Math.random()*50)).toString());
-		$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());	
+		$("#p2").html("Player 2 result: " + (plResult_2+=Math.floor(Math.random()*50)).toString());
+		checkAnswer(curQ);
 	});
 
 	socket.on('selectArea', function(data){
@@ -88,14 +89,23 @@
 	socket.on('winTerritory', function (data) {
 		var axis = JSON.parse(data);
 		//alert(selectedArea + " " + data);
-		console.log("Player"+axis.winner+" won")
+		console.log("Player"+axis.winner+" won");
 		map[selectedArea] = axis.winner;
-		updateMap()
+		updateMap();
+
+        var blurredBackground = $('.focused');
+        blurredBackground.removeClass('blurred');
+        $('#popup').addClass('hidden');
+        $('.dark').addClass('hidden');
+
 		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
 	});
 
 	socket.on('noWinTerritory', function () {
-		// hide popup
+        var blurredBackground = $('.focused');
+        blurredBackground.removeClass('blurred');
+        $('#popup').addClass('hidden');
+        $('.dark').addClass('hidden');
 	});
 
 	// end game

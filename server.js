@@ -66,7 +66,7 @@ io.sockets.on('connection', function (socket) {
 				usernames[username] = username;
 				users[2] = true;
 				changeTurn();
-				startGame();
+				// startGame();
 			}
 			console.log(socket.player+" player has joined.");
 			socket.emit('setPlayer', socket.player);

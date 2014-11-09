@@ -1,31 +1,54 @@
-html, body, div{padding:0px;margin:0px;}
+html, body, div {
+  padding:0px;margin:0px;
+}
+@font-face {
+    font-family: monster;
+    src: url(../fonts/mrsmonster.ttf);
+}
+@font-face {
+    font-face: roboto;
+    src: url('../fonts/Roboto.ttf');
+}
 #p1 {
     position:absolute;
-    top: 560px;
+    top: 530px;
     left: 40px;
-    width: 150px;
+    width: 170px;
     height: 40px;
-    background-color: red;
+    font-family: monster;
+    font-size: 22px;
+    color: white;
+
 }
 #p2 {
     position:absolute;
-    top:560px;
+    top:530px;
     left: 1100px;
-    width: 150px;
+    width: 170px;
     height: 40px;
-    background-color: red;
+    font-family: monster;
+    font-size: 22px;
+    color: white;
+
 }
 #pl-1 {
     position:absolute;
-    top:520px;
+    top:485px;
     left: 40px;
     width: 150px;
+    color: blue;
+    font-size: 18px;
+    font-family: roboto;
+
 }
 #pl-2 {
     position:absolute;
-    top:520px;
+    top:485px;
     left: 1100px;
     width: 150px;
+    color: red;
+    font-size:18px;
+    font-family: roboto;
 }
 #xAnimation {
     position: absolute;
@@ -43,7 +66,7 @@ html, body, div{padding:0px;margin:0px;}
     width: 80%;
     height: 300px;
     border:1px solid #fff;
-    font-size: 15px;
+    -size: 15px;
 }
 #edit-panel {
     position:relative;
@@ -238,8 +261,8 @@ img {
     left: 195px;
     width: 875px;
     height: 525px;
-    border: 3px solid yellow;
-    border-radius: 40px;
+    border: 2px solid #555;
+    border-radius: 20px;
 }
 
 .blurred {
@@ -338,6 +361,29 @@ textarea{
 }
 
 /* ----------- End game ----------- */
-#endgame-popup h1 {
+#endgame-popup {
   color: white;
+}
+
+#endgame-popup h1, h2, p {
+  text-align: center;
+}
+
+#endgame-popup p {
+  font-size: 20px;
+}
+
+#scores-container {
+  width: 204px;
+  margin: auto;
+}
+
+.pl-score {
+  background: grey;
+  width: 100px;
+  height: 35px;
+  float: left;
+  text-align: center;
+  font-size: 30px;
+  border: 1px solid #444;
 }
