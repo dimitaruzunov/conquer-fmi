@@ -104,10 +104,7 @@
         $('#popup').addClass('hidden');
         $('.dark').addClass('hidden');
 
-		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score).toString());
-		// $("#p2").html("Player 2 result: " + (scores[1]+=Math.floor(Math.random()*50)).toString());
-
-		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
+		$("#score-"+axis.winner).html(axis.score);
 	});
 
 	socket.on('winPoints', function (data) {
@@ -120,10 +117,7 @@
         $('#popup').addClass('hidden');
         $('.dark').addClass('hidden');
 
-		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score).toString());
-		// $("#p2").html("Player 2 result: " + (scores[1]+=Math.floor(Math.random()*50)).toString());
-
-		//$('#d'+selectedArea).addClass(axis.winner == 1 ? 'blue' : "red");
+		$("#p"+axis.winner).html("Player " + axis.winner + " result: " + (axis.score));
 	});
 
 	socket.on('noWinTerritory', function () {
