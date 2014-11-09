@@ -113,6 +113,7 @@ io.sockets.on('connection', function (socket) {
 			return;
 		}
 		falseAns++;
+		socket.emit('showFalseAnswer');
 	});
 
 	socket.on('checkAnswer', function(data){

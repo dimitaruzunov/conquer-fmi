@@ -2,13 +2,6 @@
 
 	var body = $("body");
 
-	updateMap();
-
-	body.on("click", ".territory .free", function() {
-		attack($(this).attr("id").substring(1));
-		$(this).addClass("underAttack");
-	});
-
 	body.on("click", "#btn-join", function(e) {
 		e.preventDefault();
 		window.location.href = $(this).attr("href") + "/" + $("#username").val();
@@ -23,16 +16,22 @@
 		evaluateCode($("#code").text());
 	});
 
-	// body.on("click", "#submitAnswer", sendAnswer);
-
 	socket.on('connect', function() {
 		socket.emit('adduser', "krisko");
 	});
 
 	socket.on('startGame', function(data) {
+		updateMap();
+
 		var pData = JSON.parse(data);
 		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
 		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
+
+		if (pData.turn == id){
+			enableRooms();
+		} else {
+			disableRooms();
+		}
 	});
 
 	socket.on('changeTurns', function(data) {
@@ -40,10 +39,11 @@
 		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
 		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
 		updateMap();
-		if(pData.turn == id){
-			// yourTurn();
+		resetTextFields();
+		if (pData.turn == id){
+			enableRooms();
 		} else {
-			//its not your turn
+			disableRooms();
 		}
 	});
 
@@ -76,8 +76,6 @@
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
-		// $("#pl-" + turn.toString()).html("Player " + turn.toString() + " turn");
-		// $("#pl-" + (3-turn).toString()).html("Player " + (3-turn).toString() + " waiting...");
 		checkAnswer(curQ);
 	});
 
@@ -132,15 +130,14 @@
         $('.dark').addClass('hidden');
 	});
 
-	// end game
+	socket.on('showFalseAnswer', function () {
+		disableRooms();
+	});
+
 	socket.on('endGame', function () {
 		endGame();
 	});
 
-	$(".territory").click(function(){
-		socket.emit('changeTerritory', JSON.stringify({x:$(this).index(), id:id}));
-		//selectedArea = JSON.stringify({x:$(this).index(), id:id});
-    });
 	function replayGif(){
 		var img = new Image();
 		img.src = '../img/xAnimation.gif';

@@ -10,9 +10,7 @@ var p2 = $("#p2");
 
 p1.html("Player 1 result: " + 0);
 p2.html("Player 2 result: " + 0);
-// var yourTurn = function () {
-// 	console.log("Your Turn! Player"+turn);
-// };
+
 var attack = function (terrId) {
 	socketOnAttack(terrId);
 };
@@ -64,14 +62,16 @@ var evaluateCode = function (code) {
 	$(".console-response").val(eval(code));
 };
 
-var updateStats = function (status) {
-	updateCorrectness(status.correct);
+var enableRooms = function () {
+	$('body').on('click', '.territory', function () {
+		socket.emit('changeTerritory', JSON.stringify({x:$(this).index(), id:id}));
+	});
+	$('.territory').addClass('darken').removeClass('rooms-disabled');
+};
 
-	updateMap();
-
-	if (status.yourTurn) {
-		yourTurn();
-	}
+var disableRooms = function () {
+	$('body').off('click', '.territory');
+	$('.territory').removeClass('darken').addClass('rooms-disabled');
 };
 
 var updateMap = function () {
@@ -83,6 +83,11 @@ var updateMap = function () {
 		}
 	}
 };
+
+var resetTextFields = function () {
+	$('#answer').val('');
+	editor.setSession(ace.createEditSession('function returnValue(){\n\n}\nreturnValue();'));
+}
 
 var updateCorrectness = function (correct) {
 	if (correct) {

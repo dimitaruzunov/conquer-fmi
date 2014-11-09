@@ -116,6 +116,11 @@ img {
 .darken:hover{
     opacity: 0.1;
 }
+.rooms-disabled {
+  background: black;
+  opacity: 0.4;
+}
+
 #map{
     position: relative;
 }
