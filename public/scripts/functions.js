@@ -87,6 +87,7 @@ var updateMap = function () {
 var resetTextFields = function () {
 	$('#answer').val('');
 	editor.setSession(ace.createEditSession('function returnValue(){\n\n}\nreturnValue();'));
+	editor.getSession().setMode("ace/mode/javascript");
 }
 
 var updateCorrectness = function (correct) {
