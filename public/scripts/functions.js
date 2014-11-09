@@ -1,3 +1,16 @@
+// game timer
+var gameTimer = window.setTimeout(endGame, 30000);
+
+// game ends when the time runs out
+var endGame = function () {	
+	showEndGamePopup();
+};
+
+var showEndGamePopup() {
+	$("#popup").hide();
+	$("#endgame-popup").show();
+};
+
 var turn = 2;
 var map = [], id, selectedArea;
 var yourTurn = function () {
@@ -7,8 +20,8 @@ var attack = function (terrId) {
 	socketOnAttack(terrId);
 };
 
-var timeout;
-var questionTime;
+// var timeout;
+// var questionTime;
 var loadUpQuestion = function (question) {
 	//questionTime = new Date().getTime();
 	// timeout = window.setTimeout(sendAnswer, 10000000);
@@ -69,5 +82,5 @@ var updateCorrectness = function (correct) {
 
 for(var i=0; i<18; i++)map[i]=0;
 //TODO: add config file
-var socket = io.connect('http://10.0.201.34:3030');
+var socket = io.connect('http://localhost:3030');
 //var socket = io.connect('http://localhost:8080');

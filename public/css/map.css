@@ -204,7 +204,7 @@ img {
     height: 154px;
 }
 
-#popup {
+.popup {
     background-image: url("../img/popUp.png") ;
     position: absolute;
     top: 72px;
@@ -308,4 +308,9 @@ textarea{
 }
 .posAns .submit{
     left: 10px;
+}
+
+/* ----------- End game ----------- */
+#endgame-popup h1 {
+  
 }
