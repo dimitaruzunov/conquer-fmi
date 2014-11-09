@@ -79,10 +79,6 @@
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
-<<<<<<< HEAD
-		turn = 3 - turn;		
-=======
->>>>>>> e0556e99803dfdf68c15231316f2a758128170ab
 		checkAnswer(curQ);
 	});
 
