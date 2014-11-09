@@ -88,6 +88,12 @@ var checkAnswer = function (question) {
 	}
 };
 
+$(document).keydown(function(e) {
+    if (e.which == 8 && !$(':focus').length) {
+        e.preventDefault();
+    }
+});
+
 var evaluateCode = function (code) {
 	$(".console-response").val(eval(code));
 };
