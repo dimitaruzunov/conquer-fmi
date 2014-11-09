@@ -74,9 +74,9 @@ html, body, div {
     top: -7px;
     left: -7px;
 }
-.focused{
-    margin-top: 5px;
-    margin-left: 25px;
+.focused {
+    width: 1280px;
+    margin: 5px auto;
 }
 
 
