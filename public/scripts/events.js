@@ -24,7 +24,7 @@
 
 	socket.on('startGame', function(data) {
 		updateMap();
-
+		//$('.submit').removeAttr('disabled');
 		var pData = JSON.parse(data);
 		$("#pl-" + pData.turn).html("Player " + pData.turn + " turn");
 		$("#pl-" + (3 - pData.turn)).html("Player " + (3-pData.turn) + " waiting...");
@@ -76,12 +76,24 @@
 		//map[axis.x] = axis.id;
 		//updateMap()
 	});
-
+	var logicAnswer;
 	$('.submit').on('click', function() {
 		$("#popup").addClass('hidden');
 		$(".dark").addClass('hidden');
 		$(".focused").removeClass('blurred');
-		checkAnswer(curQ);
+		checkAnswer(curQ, logicAnswer, countAnswers);
+		// if (countAnswers === 2) {
+
+		// 	countAnswers = 0;
+		// }
+		if (logicAnswer) {
+			//$('.correct').removeClass('hidden');
+			//$('.wrong').addClass('hidden');
+			//$('.submit').attr('disabled', 'disabled');
+		} else {
+			//$('.submit').attr('disabled', 'disabled');
+		}
+
 	});
 
 	socket.on('selectArea', function(data){

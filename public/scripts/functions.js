@@ -7,6 +7,7 @@ var id, selectedArea;
 // players
 var p1 = $("#p1");
 var p2 = $("#p2");
+var countAnswers = 0;
 
 p1.html("Player 1");
 p2.html("Player 2");
@@ -73,7 +74,7 @@ var loadUpQuestion = function (question) {
 	}
 };
 
-var checkAnswer = function (question) {
+var checkAnswer = function (question, logic, count) {
 	//$("#question").text(question.body);
 	//$("#code").val();
 	var userAns = $("#answer").val();
@@ -81,9 +82,14 @@ var checkAnswer = function (question) {
 	// window.clearTimeout(timeout);
 	console.log("Answering question for territory "+selectedArea)
 	// send answer and time
+	if (count<=2) {
+		count++;
+	}
 	if (question.answer == userAns) {
+		logic = true;
 		socket.emit('trueAnswer');//, JSON.stringify({correctness: , time: time}));
 	} else {
+		logic = false
 		socket.emit('falseAnswer');
 	}
 };

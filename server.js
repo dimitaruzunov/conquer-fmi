@@ -23,7 +23,7 @@ var usernames = {}, users={}, turn=1, falseAns = 0, questions = [], scores = [];
 
 users[1] = false;
 users[2] = false;
-var qIndex=0;
+var qIndex=0, countAnswers=0;
 function changeTurn(){
 	turn = 3-turn;
 	io.sockets.emit('changeTurns', JSON.stringify({turn: turn}));
